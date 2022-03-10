@@ -3,7 +3,7 @@
 	.section	.rodata
 	.align 8
 .LC0:
-	.string	"Programming is like building a multilingual puzzle\n"
+	.string	"\"Programming is like building a multilingual puzzle\n"
 	.text
 	.globl	main
 	.type	main, @function
