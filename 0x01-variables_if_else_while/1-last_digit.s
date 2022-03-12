@@ -1,15 +1,14 @@
 	.file	"1-last_digit.c"
 	.text
 	.section	.rodata
-	.align 8
 .LC0:
-	.string	"Last digit of %d is %d and is greater than 5\n, n, digit"
-	.align 8
+	.string	"Last digit of %d is %d"
 .LC1:
-	.string	"Last digit of %d is %d and is 0\n, n, digit"
-	.align 8
+	.string	"and is greater than 5"
 .LC2:
-	.string	"Last digit of %d is %d and is less than 6 and not 0\n, n, digit"
+	.string	"and is 0"
+.LC3:
+	.string	"and is less than 6 and not 0"
 	.text
 	.globl	main
 	.type	main, @function
@@ -29,42 +28,88 @@ main:
 	call	srand@PLT
 	call	rand@PLT
 	subl	$1073741823, %eax
-	movl	%eax, -8(%rbp)
-	movl	-8(%rbp), %edx
-	movslq	%edx, %rax
+	movl	%eax, -4(%rbp)
+	movl	-4(%rbp), %ecx
+	movslq	%ecx, %rax
 	imulq	$1717986919, %rax, %rax
 	shrq	$32, %rax
-	movl	%eax, %ecx
-	sarl	$2, %ecx
-	movl	%edx, %eax
-	sarl	$31, %eax
-	subl	%eax, %ecx
+	movl	%eax, %edx
+	sarl	$2, %edx
 	movl	%ecx, %eax
-	sall	$2, %eax
-	addl	%ecx, %eax
-	addl	%eax, %eax
+	sarl	$31, %eax
 	subl	%eax, %edx
 	movl	%edx, %eax
-	movl	%eax, -4(%rbp)
-	cmpl	$5, -4(%rbp)
-	jle	.L2
+	sall	$2, %eax
+	addl	%edx, %eax
+	addl	%eax, %eax
+	subl	%eax, %ecx
+	movl	%ecx, %edx
+	movl	-4(%rbp), %eax
+	movl	%eax, %esi
 	leaq	.LC0(%rip), %rdi
 	movl	$0, %eax
 	call	printf@PLT
+	movl	-4(%rbp), %ecx
+	movslq	%ecx, %rax
+	imulq	$1717986919, %rax, %rax
+	shrq	$32, %rax
+	movl	%eax, %edx
+	sarl	$2, %edx
+	movl	%ecx, %eax
+	sarl	$31, %eax
+	subl	%eax, %edx
+	movl	%edx, %eax
+	sall	$2, %eax
+	addl	%edx, %eax
+	addl	%eax, %eax
+	subl	%eax, %ecx
+	movl	%ecx, %edx
+	cmpl	$5, %edx
+	jle	.L2
+	leaq	.LC1(%rip), %rdi
+	call	puts@PLT
 	jmp	.L3
 .L2:
-	cmpl	$0, -4(%rbp)
+	movl	-4(%rbp), %ecx
+	movslq	%ecx, %rax
+	imulq	$1717986919, %rax, %rax
+	shrq	$32, %rax
+	movl	%eax, %edx
+	sarl	$2, %edx
+	movl	%ecx, %eax
+	sarl	$31, %eax
+	subl	%eax, %edx
+	movl	%edx, %eax
+	sall	$2, %eax
+	addl	%edx, %eax
+	addl	%eax, %eax
+	subl	%eax, %ecx
+	movl	%ecx, %edx
+	testl	%edx, %edx
 	jne	.L4
-	leaq	.LC1(%rip), %rdi
-	movl	$0, %eax
-	call	printf@PLT
+	leaq	.LC2(%rip), %rdi
+	call	puts@PLT
 	jmp	.L3
 .L4:
-	cmpl	$5, -4(%rbp)
+	movl	-4(%rbp), %ecx
+	movslq	%ecx, %rax
+	imulq	$1717986919, %rax, %rax
+	shrq	$32, %rax
+	movl	%eax, %edx
+	sarl	$2, %edx
+	movl	%ecx, %eax
+	sarl	$31, %eax
+	subl	%eax, %edx
+	movl	%edx, %eax
+	sall	$2, %eax
+	addl	%edx, %eax
+	addl	%eax, %eax
+	subl	%eax, %ecx
+	movl	%ecx, %edx
+	cmpl	$5, %edx
 	jg	.L3
-	leaq	.LC2(%rip), %rdi
-	movl	$0, %eax
-	call	printf@PLT
+	leaq	.LC3(%rip), %rdi
+	call	puts@PLT
 .L3:
 	movl	$0, %eax
 	leave
