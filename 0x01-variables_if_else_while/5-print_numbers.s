@@ -2,7 +2,7 @@
 	.text
 	.section	.rodata
 .LC0:
-	.string	"%d\n"
+	.string	"%d"
 	.text
 	.globl	main
 	.type	main, @function
@@ -28,6 +28,8 @@ main:
 .L2:
 	cmpl	$9, -4(%rbp)
 	jle	.L3
+	movl	$10, %edi
+	call	putchar@PLT
 	movl	$0, %eax
 	leave
 	.cfi_def_cfa 7, 8
