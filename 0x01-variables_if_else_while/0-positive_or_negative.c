@@ -4,6 +4,7 @@
 
 /**
  * main - this code assigns a random number to n
+ * it executes the program and print n
  * return : always 0 (success)
  */
 
