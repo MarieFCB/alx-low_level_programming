@@ -16,6 +16,7 @@ main:
 	jmp	.L2
 .L3:
 	movl	-4(%rbp), %eax
+	addl	$48, %eax
 	movl	%eax, %edi
 	call	putchar@PLT
 	addl	$1, -4(%rbp)
