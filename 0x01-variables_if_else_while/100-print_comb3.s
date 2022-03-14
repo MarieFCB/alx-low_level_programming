@@ -40,11 +40,11 @@ main:
 .L4:
 	addl	$1, -4(%rbp)
 .L3:
-	cmpl	$8, -4(%rbp)
+	cmpl	$9, -4(%rbp)
 	jle	.L5
 	addl	$1, -8(%rbp)
 .L2:
-	cmpl	$8, -8(%rbp)
+	cmpl	$9, -8(%rbp)
 	jle	.L6
 	movl	$10, %edi
 	call	putchar@PLT
