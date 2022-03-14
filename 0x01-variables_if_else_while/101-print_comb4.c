@@ -9,16 +9,16 @@ int main(void)
 {
 	int n, m, k;
 
-	for (n = 0; n <= 7; n++)
+	for (n = 0; n < 9; n++)
 	{
-		for (m = 1; m <= 8; m++)
+		for (m = 1; m < 9; m++)
 		{
-			for (k = 2; k <= 9; k++)
+			for (k = 2; k < 9; k++)
 			{
 				putchar((n) + '0');
 				putchar((m) + '0');
 				putchar((k) + '0');
-				if (n != 7 || m != 8 || k != 9)
+				if (n != 6 || m != 7)
 				{
 					putchar(',');
 					putchar(' ');

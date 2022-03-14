@@ -33,11 +33,9 @@ main:
 	addl	$48, %eax
 	movl	%eax, %edi
 	call	putchar@PLT
-	cmpl	$7, -12(%rbp)
+	cmpl	$6, -12(%rbp)
 	jne	.L5
-	cmpl	$8, -8(%rbp)
-	jne	.L5
-	cmpl	$9, -4(%rbp)
+	cmpl	$7, -8(%rbp)
 	je	.L6
 .L5:
 	movl	$44, %edi
@@ -47,7 +45,7 @@ main:
 .L6:
 	addl	$1, -4(%rbp)
 .L4:
-	cmpl	$9, -4(%rbp)
+	cmpl	$8, -4(%rbp)
 	jle	.L7
 	addl	$1, -8(%rbp)
 .L3:
@@ -55,7 +53,7 @@ main:
 	jle	.L8
 	addl	$1, -12(%rbp)
 .L2:
-	cmpl	$7, -12(%rbp)
+	cmpl	$8, -12(%rbp)
 	jle	.L9
 	movl	$10, %edi
 	call	putchar@PLT
