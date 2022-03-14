@@ -22,63 +22,21 @@ main:
 	cmpl	-4(%rbp), %eax
 	jle	.L4
 	movl	-8(%rbp), %eax
-	movslq	%eax, %rdx
-	imulq	$1717986919, %rdx, %rdx
-	shrq	$32, %rdx
-	sarl	$2, %edx
-	sarl	$31, %eax
-	subl	%eax, %edx
-	movl	%edx, %eax
 	addl	$48, %eax
 	movl	%eax, %edi
 	call	putchar@PLT
-	movl	-8(%rbp), %ecx
-	movslq	%ecx, %rax
-	imulq	$1717986919, %rax, %rax
-	shrq	$32, %rax
-	movl	%eax, %edx
-	sarl	$2, %edx
-	movl	%ecx, %eax
-	sarl	$31, %eax
-	subl	%eax, %edx
-	movl	%edx, %eax
-	sall	$2, %eax
-	addl	%edx, %eax
-	addl	%eax, %eax
-	subl	%eax, %ecx
-	movl	%ecx, %edx
-	leal	48(%rdx), %eax
+	movl	-8(%rbp), %eax
+	addl	$48, %eax
 	movl	%eax, %edi
 	call	putchar@PLT
 	movl	$32, %edi
 	call	putchar@PLT
 	movl	-4(%rbp), %eax
-	movslq	%eax, %rdx
-	imulq	$1717986919, %rdx, %rdx
-	shrq	$32, %rdx
-	sarl	$2, %edx
-	sarl	$31, %eax
-	subl	%eax, %edx
-	movl	%edx, %eax
 	addl	$48, %eax
 	movl	%eax, %edi
 	call	putchar@PLT
-	movl	-4(%rbp), %ecx
-	movslq	%ecx, %rax
-	imulq	$1717986919, %rax, %rax
-	shrq	$32, %rax
-	movl	%eax, %edx
-	sarl	$2, %edx
-	movl	%ecx, %eax
-	sarl	$31, %eax
-	subl	%eax, %edx
-	movl	%edx, %eax
-	sall	$2, %eax
-	addl	%edx, %eax
-	addl	%eax, %eax
-	subl	%eax, %ecx
-	movl	%ecx, %edx
-	leal	48(%rdx), %eax
+	movl	-4(%rbp), %eax
+	addl	$48, %eax
 	movl	%eax, %edi
 	call	putchar@PLT
 	cmpl	$98, -8(%rbp)
