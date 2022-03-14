@@ -7,12 +7,12 @@
  */
 int main(void)
 {
-	int k = 0;
+	int k;
 
-	while (k < 10)
+	for (k = 0; k < 10; k++)
 	{
 		putchar((k) + '0');
-		k++;
+		if (k != 9)
 		{
 			putchar(',');
 			putchar(' ');
@@ -20,6 +20,5 @@ int main(void)
 	}
 	putchar('\n');
 	return (0);
-
 
 }
