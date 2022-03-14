@@ -51,15 +51,15 @@ main:
 .L5:
 	addl	$1, -4(%rbp)
 .L4:
-	cmpl	$8, -4(%rbp)
+	cmpl	$9, -4(%rbp)
 	jle	.L7
 	addl	$1, -8(%rbp)
 .L3:
-	cmpl	$8, -8(%rbp)
+	cmpl	$9, -8(%rbp)
 	jle	.L8
 	addl	$1, -12(%rbp)
 .L2:
-	cmpl	$8, -12(%rbp)
+	cmpl	$9, -12(%rbp)
 	jle	.L9
 	movl	$10, %edi
 	call	putchar@PLT
