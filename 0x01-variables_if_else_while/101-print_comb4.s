@@ -21,6 +21,12 @@ main:
 	movl	$2, -4(%rbp)
 	jmp	.L4
 .L7:
+	movl	-4(%rbp), %eax
+	cmpl	-8(%rbp), %eax
+	jle	.L5
+	movl	-8(%rbp), %eax
+	cmpl	-12(%rbp), %eax
+	jle	.L5
 	movl	-12(%rbp), %eax
 	addl	$48, %eax
 	movl	%eax, %edi
@@ -34,15 +40,15 @@ main:
 	movl	%eax, %edi
 	call	putchar@PLT
 	cmpl	$6, -12(%rbp)
-	jne	.L5
+	jne	.L6
 	cmpl	$7, -8(%rbp)
-	je	.L6
-.L5:
+	je	.L5
+.L6:
 	movl	$44, %edi
 	call	putchar@PLT
 	movl	$32, %edi
 	call	putchar@PLT
-.L6:
+.L5:
 	addl	$1, -4(%rbp)
 .L4:
 	cmpl	$8, -4(%rbp)

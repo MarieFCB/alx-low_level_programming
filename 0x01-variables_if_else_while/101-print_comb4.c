@@ -15,13 +15,16 @@ int main(void)
 		{
 			for (k = 2; k < 9; k++)
 			{
-				putchar((n) + '0');
-				putchar((m) + '0');
-				putchar((k) + '0');
-				if (n != 6 || m != 7)
+				if (k > m && m > n)
 				{
-					putchar(',');
-					putchar(' ');
+					putchar((n) + '0');
+					putchar((m) + '0');
+					putchar((k) + '0');
+					if (n != 6 || m != 7)
+					{
+						putchar(',');
+						putchar(' ');
+					}
 				}
 			}
 		}
