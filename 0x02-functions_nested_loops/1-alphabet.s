@@ -1,8 +1,8 @@
 	.file	"1-alphabet.c"
 	.text
-	.globl	main
-	.type	main, @function
-main:
+	.globl	print_alphabet
+	.type	print_alphabet, @function
+print_alphabet:
 .LFB0:
 	.cfi_startproc
 	endbr64
@@ -12,23 +12,27 @@ main:
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
 	subq	$16, %rsp
-	movq	%fs:40, %rax
-	movq	%rax, -8(%rbp)
-	xorl	%eax, %eax
-	leaq	16(%rbp), %rax
-	movq	%rax, -16(%rbp)
-	movl	$0, %eax
-	movq	-8(%rbp), %rdx
-	xorq	%fs:40, %rdx
-	je	.L3
-	call	__stack_chk_fail@PLT
+	movb	$97, -1(%rbp)
+	jmp	.L2
 .L3:
+	movsbl	-1(%rbp), %eax
+	movl	%eax, %edi
+	call	_putchar@PLT
+	movzbl	-1(%rbp), %eax
+	addl	$1, %eax
+	movb	%al, -1(%rbp)
+.L2:
+	cmpb	$122, -1(%rbp)
+	jle	.L3
+	movl	$10, %edi
+	call	_putchar@PLT
+	nop
 	leave
 	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
 .LFE0:
-	.size	main, .-main
+	.size	print_alphabet, .-print_alphabet
 	.ident	"GCC: (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
