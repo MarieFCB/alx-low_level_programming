@@ -27,12 +27,13 @@ print_alphabet_x10:
 .L3:
 	cmpb	$122, -5(%rbp)
 	jle	.L4
+	movl	$10, %edi
+	call	_putchar@PLT
 	addl	$1, -4(%rbp)
 .L2:
 	cmpl	$9, -4(%rbp)
 	jle	.L5
-	movl	$10, %edi
-	call	_putchar@PLT
+	nop
 	nop
 	leave
 	.cfi_def_cfa 7, 8
