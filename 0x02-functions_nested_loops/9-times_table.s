@@ -37,8 +37,6 @@ times_table:
 	call	_putchar@PLT
 	movl	$32, %edi
 	call	_putchar@PLT
-	movl	$32, %edi
-	call	_putchar@PLT
 	movl	-4(%rbp), %eax
 	addl	$48, %eax
 	movsbl	%al, %eax
