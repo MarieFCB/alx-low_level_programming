@@ -22,8 +22,8 @@ print_numbers:
 	call	_putchar@PLT
 	addl	$1, -4(%rbp)
 .L2:
-	cmpl	$9, -4(%rbp)
-	jle	.L3
+	cmpl	$0, -4(%rbp)
+	js	.L3
 	movl	$10, %edi
 	call	_putchar@PLT
 	nop
