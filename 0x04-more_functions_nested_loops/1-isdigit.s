@@ -13,15 +13,16 @@ _isdigit:
 	.cfi_def_cfa_register 6
 	subq	$16, %rsp
 	movl	%edi, -4(%rbp)
-	cmpl	$0, -4(%rbp)
-	jne	.L2
-	cmpl	$9, -4(%rbp)
-	jg	.L2
 	movl	-4(%rbp), %eax
 	movl	%eax, %edi
 	call	_isdigit
-.L2:
+	testl	%eax, %eax
+	je	.L2
 	movl	$1, %eax
+	jmp	.L3
+.L2:
+	movl	$0, %eax
+.L3:
 	leave
 	.cfi_def_cfa 7, 8
 	ret
