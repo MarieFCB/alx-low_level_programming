@@ -24,42 +24,44 @@ rev_string:
 	movzbl	(%rax), %eax
 	testb	%al, %al
 	jne	.L3
-	movl	$0, -8(%rbp)
+	movl	-12(%rbp), %eax
+	subl	$1, %eax
+	movl	%eax, -8(%rbp)
+	movl	$0, -4(%rbp)
 	jmp	.L4
 .L5:
-	movl	-8(%rbp), %eax
+	movl	-4(%rbp), %eax
 	movslq	%eax, %rdx
 	movq	-24(%rbp), %rax
 	addq	%rdx, %rax
 	movzbl	(%rax), %eax
-	movsbl	%al, %eax
-	movl	%eax, -4(%rbp)
-	movl	-12(%rbp), %eax
-	cltq
-	leaq	-1(%rax), %rdx
+	movb	%al, -13(%rbp)
+	movl	-8(%rbp), %eax
+	movslq	%eax, %rdx
 	movq	-24(%rbp), %rax
 	addq	%rdx, %rax
-	movl	-8(%rbp), %edx
+	movl	-4(%rbp), %edx
 	movslq	%edx, %rcx
 	movq	-24(%rbp), %rdx
 	addq	%rcx, %rdx
 	movzbl	(%rax), %eax
 	movb	%al, (%rdx)
-	movl	-12(%rbp), %eax
-	cltq
-	leaq	-1(%rax), %rdx
+	movl	-8(%rbp), %eax
+	leal	-1(%rax), %edx
+	movl	%edx, -8(%rbp)
+	movslq	%eax, %rdx
 	movq	-24(%rbp), %rax
-	addq	%rdx, %rax
-	movl	-4(%rbp), %edx
-	movb	%dl, (%rax)
-	addl	$1, -8(%rbp)
+	addq	%rax, %rdx
+	movzbl	-13(%rbp), %eax
+	movb	%al, (%rdx)
+	addl	$1, -4(%rbp)
 .L4:
 	movl	-12(%rbp), %eax
 	movl	%eax, %edx
 	shrl	$31, %edx
 	addl	%edx, %eax
 	sarl	%eax
-	cmpl	%eax, -8(%rbp)
+	cmpl	%eax, -4(%rbp)
 	jl	.L5
 	nop
 	nop
