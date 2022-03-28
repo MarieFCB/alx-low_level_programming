@@ -11,13 +11,21 @@ _strlen:
 	.cfi_offset 6, -16
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
-	subq	$16, %rsp
-	movq	%rdi, -8(%rbp)
-	movq	-8(%rbp), %rax
-	movq	%rax, %rdi
-	call	_strlen
-	nop
-	leave
+	movq	%rdi, -24(%rbp)
+	movl	$0, -4(%rbp)
+	jmp	.L2
+.L3:
+	addl	$1, -4(%rbp)
+.L2:
+	movl	-4(%rbp), %eax
+	movslq	%eax, %rdx
+	movq	-24(%rbp), %rax
+	addq	%rdx, %rax
+	movzbl	(%rax), %eax
+	testb	%al, %al
+	jne	.L3
+	movl	-4(%rbp), %eax
+	popq	%rbp
 	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
