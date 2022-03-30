@@ -17,16 +17,16 @@ _strlen_recursion:
 	movq	-24(%rbp), %rax
 	movzbl	(%rax), %eax
 	testb	%al, %al
-	je	.L2
-	addl	$1, -4(%rbp)
-	addq	$1, -24(%rbp)
+	jne	.L2
+	movl	$0, %eax
+	jmp	.L3
+.L2:
 	movq	-24(%rbp), %rax
+	addq	$1, %rax
 	movq	%rax, %rdi
 	call	_strlen_recursion
-	jmp	.L1
-.L2:
-	movl	-4(%rbp), %eax
-.L1:
+	addl	$1, %eax
+.L3:
 	leave
 	.cfi_def_cfa 7, 8
 	ret
