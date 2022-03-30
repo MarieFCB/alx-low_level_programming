@@ -16,7 +16,12 @@ _puts_recursion:
 	movq	-8(%rbp), %rax
 	movzbl	(%rax), %eax
 	testb	%al, %al
-	jne	.L4
+	je	.L4
+	movq	-8(%rbp), %rax
+	movzbl	(%rax), %eax
+	movsbl	%al, %eax
+	movl	%eax, %edi
+	call	_putchar@PLT
 	movq	-8(%rbp), %rax
 	addq	$1, %rax
 	movq	%rax, %rdi
