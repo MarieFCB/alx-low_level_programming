@@ -1,9 +1,5 @@
 	.file	"0-puts_recursion.c"
 	.text
-	.section	.rodata
-.LC0:
-	.string	"%c\n"
-	.text
 	.globl	_puts_recursion
 	.type	_puts_recursion, @function
 _puts_recursion:
@@ -20,15 +16,11 @@ _puts_recursion:
 	movq	-8(%rbp), %rax
 	movzbl	(%rax), %eax
 	testb	%al, %al
-	je	.L4
+	jne	.L4
 	movq	-8(%rbp), %rax
-	movzbl	(%rax), %eax
-	movsbl	%al, %eax
-	movl	%eax, %esi
-	leaq	.LC0(%rip), %rdi
-	movl	$0, %eax
-	call	printf@PLT
-	addq	$1, -8(%rbp)
+	addq	$1, %rax
+	movq	%rax, %rdi
+	call	_puts_recursion
 	jmp	.L1
 .L4:
 	nop
