@@ -11,25 +11,13 @@ _puts_recursion:
 	.cfi_offset 6, -16
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
-	subq	$32, %rsp
-	movq	%rdi, -24(%rbp)
-	movl	$0, -4(%rbp)
-	jmp	.L2
-.L3:
-	addl	$1, -4(%rbp)
-.L2:
-	movl	-4(%rbp), %eax
-	movslq	%eax, %rdx
-	movq	-24(%rbp), %rax
-	addq	%rdx, %rax
+	subq	$16, %rsp
+	movq	%rdi, -8(%rbp)
+	movq	-8(%rbp), %rax
 	movzbl	(%rax), %eax
 	testb	%al, %al
-	jne	.L3
-	movq	-24(%rbp), %rax
-	movzbl	(%rax), %eax
-	testb	%al, %al
-	je	.L6
-	movq	-24(%rbp), %rax
+	je	.L4
+	movq	-8(%rbp), %rax
 	movzbl	(%rax), %eax
 	movsbl	%al, %eax
 	movl	%eax, %edi
@@ -37,7 +25,7 @@ _puts_recursion:
 	movl	$10, %edi
 	call	_putchar@PLT
 	jmp	.L1
-.L6:
+.L4:
 	nop
 .L1:
 	leave
