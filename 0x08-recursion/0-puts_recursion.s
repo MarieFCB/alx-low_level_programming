@@ -26,6 +26,8 @@ _puts_recursion:
 	addq	$1, %rax
 	movq	%rax, %rdi
 	call	_puts_recursion
+	movl	$10, %edi
+	call	_putchar@PLT
 	jmp	.L1
 .L4:
 	nop
