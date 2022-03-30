@@ -16,7 +16,11 @@ _puts_recursion:
 	movq	-8(%rbp), %rax
 	movzbl	(%rax), %eax
 	testb	%al, %al
-	je	.L4
+	jne	.L2
+	movl	$10, %edi
+	call	_putchar@PLT
+	jmp	.L1
+.L2:
 	movq	-8(%rbp), %rax
 	movzbl	(%rax), %eax
 	movsbl	%al, %eax
@@ -26,11 +30,6 @@ _puts_recursion:
 	addq	$1, %rax
 	movq	%rax, %rdi
 	call	_puts_recursion
-	movl	$10, %edi
-	call	_putchar@PLT
-	jmp	.L1
-.L4:
-	nop
 .L1:
 	leave
 	.cfi_def_cfa 7, 8
