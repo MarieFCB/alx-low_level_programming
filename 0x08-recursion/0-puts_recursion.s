@@ -22,6 +22,7 @@ _puts_recursion:
 	movsbl	%al, %eax
 	movl	%eax, %edi
 	call	_putchar@PLT
+	addq	$1, -8(%rbp)
 	movl	$10, %edi
 	call	_putchar@PLT
 	jmp	.L1
