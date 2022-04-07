@@ -9,6 +9,7 @@
  * @dest: where srting is append to
  * @src: where string is append from
  * @n: maximum byte to use
+ * Return: a pointer to the resulting string dest
  */
 char *_strncat(char *dest, char *src, int n)
 {
